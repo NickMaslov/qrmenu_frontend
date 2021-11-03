@@ -62,3 +62,16 @@ export function fetchPlaces(token) {
 export function addPlace(data, token) {
   return request('/api/places/', { data, token, method: 'POST' });
 }
+
+export function uploadImage(image) {
+  const formData = new FormData();
+  formData.append('file', image);
+  formData.append('upload_preset', 'qrmenu_photos');
+
+  return fetch('https://api.cloudinary.com/v1_1/dzwnojf6m/image/upload', {
+    method: 'POST',
+    body: formData,
+  }).then((response) => {
+    return response.json();
+  });
+}
