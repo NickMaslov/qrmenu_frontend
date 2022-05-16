@@ -7,6 +7,7 @@ import AuthContext from '../contexts/AuthContext';
 
 import MainLayout from '../layouts/MainLayout';
 import PlaceForm from '../containers/PlaceForm';
+import { useHistory } from 'react-router-dom';
 
 const Place = styled.div`
   margin-bottom: 20px;
@@ -46,6 +47,7 @@ const Places = () => {
   const [show, setShow] = useState(false);
 
   const auth = useContext(AuthContext);
+  const history = useHistory();
 
   const onHide = () => setShow(false);
   const onShow = () => setShow(true);
@@ -78,7 +80,7 @@ const Places = () => {
       <Row>
         {places.map((place) => (
           <Col key={place.id} lg={4}>
-            <Place>
+            <Place onClick={() => history.push(`/places/${place.id}`)}>
               <div style={{ backgroundImage: `url(${place.image})` }}></div>
               <p>{place.name}</p>
             </Place>

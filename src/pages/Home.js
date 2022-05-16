@@ -13,7 +13,7 @@ const Home = () => {
                 <b>QR Code Menu</b>
               </h1>
               <h5 className='mt-4 mb-4'>
-                A smart way to share your digital menu in a Qr Code with your
+                A smart way to share your digital menu in a QR Code with your
                 customers
               </h5>
               <br />
