@@ -17,7 +17,7 @@ import {
 import AuthContext from '../contexts/AuthContext';
 import MainLayout from '../layouts/MainLayout';
 import MenuItemForm from '../containers/MenuItemForm';
-// import MenuItem from '../components/MenuItem';
+import MenuItem from '../components/MenuItem';
 // import QRCodeModal from '../components/QRCodeModal';
 
 const Panel = styled.div`
@@ -31,13 +31,13 @@ const Place = () => {
   const [place, setPlace] = useState({});
   const [menuItemFormShow, setMenuItemFormShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [qrCode, setQrCode] = useState(false);
+  // const [qrCode, setQrCode] = useState(false);
 
   const showModal = () => setMenuItemFormShow(true);
   const hideModal = () => setMenuItemFormShow(false);
 
-  const showQRModal = () => setQrCode(true);
-  const hideQRModal = () => setQrCode(false);
+  // const showQRModal = () => setQrCode(true);
+  // const hideQRModal = () => setQrCode(false);
 
   const auth = useContext(AuthContext);
   const params = useParams();
@@ -59,29 +59,29 @@ const Place = () => {
     }
   };
 
-  //   const onRemoveCategory = (id) => {
-  //     const c = window.confirm("Are you sure?");
-  //     if (c) {
-  //       removeCategory(id, auth.token).then(onFetchPlace);
-  //     }
-  //   };
+  const onRemoveCategory = (id) => {
+    const c = window.confirm('Are you sure?');
+    if (c) {
+      removeCategory(id, auth.token).then(onFetchPlace);
+    }
+  };
 
-  //   const onRemoveMenuItem = (id) => {
-  //     const c = window.confirm("Are you sure?");
-  //     if (c) {
-  //       removeMenuItem(id, auth.token).then(onFetchPlace);
-  //     }
-  //   };
+  const onRemoveMenuItem = (id) => {
+    const c = window.confirm('Are you sure?');
+    if (c) {
+      removeMenuItem(id, auth.token).then(onFetchPlace);
+    }
+  };
 
-  //   const onUpdatePlace = (tables) => {
-  //     updatePlace(place.id, { number_of_tables: tables }, auth.token).then(
-  //       (json) => {
-  //         if (json) {
-  //           setPlace(json);
-  //         }
+  // const onUpdatePlace = (tables) => {
+  //   updatePlace(place.id, { number_of_tables: tables }, auth.token).then(
+  //     (json) => {
+  //       if (json) {
+  //         setPlace(json);
   //       }
-  //     )
-  //   }
+  //     }
+  //   )
+  // }
 
   useEffect(() => {
     onFetchPlace();
@@ -103,15 +103,15 @@ const Place = () => {
               </Button>
             </div>
 
-            <Button variant='link' onClick={showQRModal}>
+            {/* <Button variant='link' onClick={showQRModal}>
               <AiOutlineQrcode size={25} />
-            </Button>
-            <Button variant='link' href={`/places/${params.id}/orders`}>
+            </Button> */}
+            {/* <Button variant='link' href={`/places/${params.id}/orders`}>
               <RiFileList3Line size={25} />
-            </Button>
-            <Button variant='link' href={`/places/${params.id}/settings`}>
+            </Button> */}
+            {/* <Button variant='link' href={`/places/${params.id}/settings`}>
               <FiSettings size={25} />
-            </Button>
+            </Button> */}
           </div>
         </Col>
 
@@ -121,46 +121,49 @@ const Place = () => {
           </Panel>
         </Col>
 
-        {/* <Col md={8}>
+        <Col md={8}>
           {place?.categories?.map((category) => (
-            <div key={category.id} className="mb-5">
-              <div className="d-flex align-items-center mb-4">
-                <h4 className="mb-0 mr-2">
+            <div key={category.id} className='mb-5'>
+              <div className='d-flex align-items-center mb-4'>
+                <h4 className='mb-0 mr-2'>
                   <b>{category.name}</b>
                 </h4>
-                <Button variant="link" onClick={() => onRemoveCategory(category.id)}>
-                  <AiOutlineDelete size={25} color="red" />
+                <Button
+                  variant='link'
+                  onClick={() => onRemoveCategory(category.id)}
+                >
+                  <AiOutlineDelete size={25} color='red' />
                 </Button>
               </div>
               {category.menu_items.map((item) => (
-                <MenuItem 
-                  key={item.id} 
-                  item={item} 
+                <MenuItem
+                  key={item.id}
+                  item={item}
                   onEdit={() => {
                     setSelectedItem(item);
-                    showModal()
+                    showModal();
                   }}
                   onRemove={() => onRemoveMenuItem(item.id)}
                 />
               ))}
             </div>
           ))}
-        </Col> */}
+        </Col>
       </Row>
 
-      {/* <Modal show={menuItemFormShow} onHide={hideModal} centered>
+      <Modal show={menuItemFormShow} onHide={hideModal} centered>
         <Modal.Body>
-          <h4 className="text-center">Menu Item</h4>
-          <MenuItemForm 
+          <h4 className='text-center'>Menu Item</h4>
+          <MenuItemForm
             place={place}
             onDone={() => {
               onFetchPlace();
-              hideModal()
+              hideModal();
             }}
             item={selectedItem}
           />
         </Modal.Body>
-      </Modal> */}
+      </Modal>
 
       {/* <QRCodeModal 
         show={qrCode} 

@@ -84,8 +84,6 @@ const MenuItemForm = ({ place, onDone, item = {} }) => {
     );
 
     if (json) {
-      console.log(json);
-
       toast(`Menu Item ${json.name} was updated`, { type: 'success' });
       setCategory('');
       setName('');
