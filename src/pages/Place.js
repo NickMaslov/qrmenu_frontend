@@ -18,7 +18,7 @@ import AuthContext from '../contexts/AuthContext';
 import MainLayout from '../layouts/MainLayout';
 import MenuItemForm from '../containers/MenuItemForm';
 import MenuItem from '../components/MenuItem';
-// import QRCodeModal from '../components/QRCodeModal';
+import QRCodeModal from '../components/QRCodeModal';
 
 const Panel = styled.div`
   background-color: white;
@@ -31,13 +31,13 @@ const Place = () => {
   const [place, setPlace] = useState({});
   const [menuItemFormShow, setMenuItemFormShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  // const [qrCode, setQrCode] = useState(false);
+  const [qrCode, setQrCode] = useState(false);
 
   const showModal = () => setMenuItemFormShow(true);
   const hideModal = () => setMenuItemFormShow(false);
 
-  // const showQRModal = () => setQrCode(true);
-  // const hideQRModal = () => setQrCode(false);
+  const showQRModal = () => setQrCode(true);
+  const hideQRModal = () => setQrCode(false);
 
   const auth = useContext(AuthContext);
   const params = useParams();
@@ -73,15 +73,15 @@ const Place = () => {
     }
   };
 
-  // const onUpdatePlace = (tables) => {
-  //   updatePlace(place.id, { number_of_tables: tables }, auth.token).then(
-  //     (json) => {
-  //       if (json) {
-  //         setPlace(json);
-  //       }
-  //     }
-  //   )
-  // }
+  const onUpdatePlace = (tables) => {
+    updatePlace(place.id, { number_of_tables: tables }, auth.token).then(
+      (json) => {
+        if (json) {
+          setPlace(json);
+        }
+      }
+    );
+  };
 
   useEffect(() => {
     onFetchPlace();
@@ -103,9 +103,9 @@ const Place = () => {
               </Button>
             </div>
 
-            {/* <Button variant='link' onClick={showQRModal}>
+            <Button variant='link' onClick={showQRModal}>
               <AiOutlineQrcode size={25} />
-            </Button> */}
+            </Button>
             {/* <Button variant='link' href={`/places/${params.id}/orders`}>
               <RiFileList3Line size={25} />
             </Button> */}
@@ -165,13 +165,13 @@ const Place = () => {
         </Modal.Body>
       </Modal>
 
-      {/* <QRCodeModal 
-        show={qrCode} 
-        onHide={hideQRModal} 
-        place={place} 
-        centered 
+      <QRCodeModal
+        show={qrCode}
+        onHide={hideQRModal}
+        place={place}
+        centered
         onUpdatePlace={onUpdatePlace}
-      /> */}
+      />
     </MainLayout>
   );
 };
