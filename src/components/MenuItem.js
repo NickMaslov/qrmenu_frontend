@@ -23,7 +23,7 @@ const Container = styled.div`
   }
 `;
 
-const MenuItem = ({ item, onEdit, onRemove }) => {
+const MenuItem = ({ item, onEdit, onRemove, onOrder }) => {
   return (
     <Container active={item.is_available}>
       <Col xs={5} style={{ backgroundImage: `url(${item.image})` }} />
@@ -54,6 +54,19 @@ const MenuItem = ({ item, onEdit, onRemove }) => {
             <h5>
               <b>$ {item.price}</b>
             </h5>
+
+            {onOrder ? (
+              <Button
+                variant='standard'
+                className='mt-2'
+                size='sm'
+                onClick={() => onOrder(item)}
+              >
+                {!item.quantity
+                  ? 'Add to shopping cart'
+                  : `Add one more (${item.quantity})`}
+              </Button>
+            ) : null}
           </div>
 
           {!item.is_available ? (

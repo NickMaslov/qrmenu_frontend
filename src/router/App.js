@@ -10,6 +10,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Places from '../pages/Places';
 import Place from '../pages/Place';
+import Menu from '../pages/Menu';
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
           <Route exact path='/register'>
             <Register />
           </Route>
+          <Route exact path='/menu/:id/:table'>
+            <Menu />
+          </Route>
+
           <PrivateRoute exact path='/places/:id'>
             <Place />
           </PrivateRoute>
