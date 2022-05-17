@@ -103,7 +103,7 @@ const Menu = () => {
       {totalQuantity ? (
         <OrderButton
           variant='standard'
-          //   style={{ backgroundColor: place.color }}
+          style={{ backgroundColor: place.color }}
           onClick={() => setShowShoppingCart(!showShoppingCart)}
         >
           {showShoppingCart ? <IoCloseOutline size={25} /> : totalQuantity}

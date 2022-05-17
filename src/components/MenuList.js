@@ -21,13 +21,12 @@ const MenuList = ({
   place,
   shoppingCart = {},
   onOrder,
-  //   font = '',
-  //   color = '',
+  font = '',
+  color = '',
 }) => {
+  console.log('font', font);
   return (
-    <Container
-    // font={font}
-    >
+    <Container font={font}>
       <Place>
         <img
           alt={place.description}
@@ -58,7 +57,7 @@ const MenuList = ({
                     quantity: shoppingCart[item.id]?.quantity,
                   }}
                   onOrder={onOrder}
-                  //   color={color}
+                  color={color}
                 />
               ))}
           </div>

@@ -12,6 +12,7 @@ import Places from '../pages/Places';
 import Place from '../pages/Place';
 import Menu from '../pages/Menu';
 import Orders from '../pages/Orders';
+import MenuSettings from '../pages/MenuSettings';
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path='/places/:id/orders'>
             <Orders />
+          </PrivateRoute>
+          <PrivateRoute exact path='/places/:id/settings'>
+            <MenuSettings />
           </PrivateRoute>
         </Switch>
       </BrowserRouter>

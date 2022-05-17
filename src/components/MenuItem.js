@@ -23,7 +23,7 @@ const Container = styled.div`
   }
 `;
 
-const MenuItem = ({ item, onEdit, onRemove, onOrder }) => {
+const MenuItem = ({ item, onEdit, onRemove, onOrder, color }) => {
   return (
     <Container active={item.is_available}>
       <Col xs={5} style={{ backgroundImage: `url(${item.image})` }} />
@@ -52,7 +52,7 @@ const MenuItem = ({ item, onEdit, onRemove, onOrder }) => {
         <div className='d-flex justify-content-between align-items-end'>
           <div className='mb-0 text-standard'>
             <h5>
-              <b>$ {item.price}</b>
+              <b style={{ color }}>$ {item.price}</b>
             </h5>
 
             {onOrder ? (
@@ -61,6 +61,7 @@ const MenuItem = ({ item, onEdit, onRemove, onOrder }) => {
                 className='mt-2'
                 size='sm'
                 onClick={() => onOrder(item)}
+                style={{ backgroundColor: color }}
               >
                 {!item.quantity
                   ? 'Add to shopping cart'

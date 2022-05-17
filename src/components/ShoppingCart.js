@@ -60,7 +60,7 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
             amount={totalPrice}
             items={items}
             onDone={onPaymentDone}
-            // color={color}
+            color={color}
           />
         </Card.Body>
       </Card>
