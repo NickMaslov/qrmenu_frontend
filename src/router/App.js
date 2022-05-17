@@ -11,6 +11,7 @@ import Register from '../pages/Register';
 import Places from '../pages/Places';
 import Place from '../pages/Place';
 import Menu from '../pages/Menu';
+import Orders from '../pages/Orders';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute exact path='/places'>
             <Places />
+          </PrivateRoute>
+          <PrivateRoute exact path='/places/:id/orders'>
+            <Orders />
           </PrivateRoute>
         </Switch>
       </BrowserRouter>

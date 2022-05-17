@@ -118,3 +118,11 @@ export function createPaymentIntent(data, token) {
     method: 'POST',
   });
 }
+
+export function fetchOrders(placeId, token) {
+  return request(`/api/orders/?place=${placeId}`, { token });
+}
+
+export function completeOrder(id, data, token) {
+  return request(`/api/orders/${id}`, { data, token, method: 'PATCH' });
+}
