@@ -57,10 +57,10 @@ const Menu = () => {
     });
   };
 
-  //   const onPaymentDone = () => {
-  //     setShoppingCart({});
-  //     setShowShoppingCart(false);
-  //   };
+  const onPaymentDone = () => {
+    setShoppingCart({});
+    setShowShoppingCart(false);
+  };
 
   const totalQuantity = useMemo(
     () =>
@@ -85,7 +85,7 @@ const Menu = () => {
                 .filter((item) => item.quantity > 0)}
               onAdd={onAddItemtoShoppingCart}
               onRemove={onRemoveItemToShoppingCart}
-              //   onPaymentDone={onPaymentDone}
+              onPaymentDone={onPaymentDone}
               color={place.color}
             />
           ) : (

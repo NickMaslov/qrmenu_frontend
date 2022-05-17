@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Card } from 'react-bootstrap';
 import OperationButton from './OperationButton';
-// import PaymentForm from '../containers/PaymentForm';
+import PaymentForm from '../containers/PaymentForm';
 
 const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
   const totalPrice = useMemo(
@@ -56,7 +56,12 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
           </div>
 
           <hr className='mb-4' />
-          {/* <PaymentForm amount={totalPrice} items={items} onDone={onPaymentDone} color={color} /> */}
+          <PaymentForm
+            amount={totalPrice}
+            items={items}
+            onDone={onPaymentDone}
+            // color={color}
+          />
         </Card.Body>
       </Card>
     </>

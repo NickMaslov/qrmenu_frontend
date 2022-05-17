@@ -110,3 +110,11 @@ export function removeMenuItem(id, token) {
 export function updatePlace(id, data, token) {
   return request(`/api/places/${id}`, { data, token, method: 'PATCH' });
 }
+
+export function createPaymentIntent(data, token) {
+  return request(`/api/create_payment_intent/`, {
+    data,
+    token,
+    method: 'POST',
+  });
+}
